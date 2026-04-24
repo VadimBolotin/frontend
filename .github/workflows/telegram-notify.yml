@@ -1,0 +1,28 @@
+name: Telegram Notifications
+
+on:
+  workflow_run:
+    workflows: ['Lint and Build']
+    types:
+      - completed
+    branches: [main]
+
+jobs:
+  notify-telegram:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
+    steps:
+      - name: Send Telegram notification
+        uses: cbrgm/telegram-github-action@v1
+        with:
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          message: |
+            ✅ **Успешный пуш в ${{ github.event.workflow_run.head_branch }}!**
+
+            👤 **Автор:** ${{ github.event.workflow_run.actor.login }}
+            📦 **Репозиторий:** ${{ github.repository }}
+            💬 **Коммит:** ${{ github.event.workflow_run.head_commit.message }}
+            🔗 **Ссылка:** https://github.com/${{ github.repository }}/commit/${{ github.event.workflow_run.head_commit.id }}
+            ⏰ **Время:** ${{ github.event.workflow_run.created_at }}
