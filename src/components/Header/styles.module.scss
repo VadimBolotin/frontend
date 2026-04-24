@@ -1,0 +1,13 @@
+@use "@/styles/mixins" as *;
+
+.header {
+    padding: 50px 0;
+    @include respond-up-to("laptop") {
+            padding: 27px 0;
+    }
+}
+.inner{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

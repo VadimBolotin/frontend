@@ -1,0 +1,25 @@
+@use "@/styles/color.scss";
+@use "@/styles/mixins" as *;
+
+.burger{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    @include respond-up-to("laptop") {
+            gap: 0;
+    }
+}
+.items{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+.item{
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 0.13em;
+    color:var(--black);
+    @include respond-up-to("laptop") {
+            display: none;
+    }
+}
