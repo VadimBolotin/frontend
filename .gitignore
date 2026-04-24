@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+echo "*.pem" >> .gitignore
+echo "deploy_key*" >> .gitignore
