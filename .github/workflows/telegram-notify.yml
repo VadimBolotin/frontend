@@ -22,7 +22,5 @@ jobs:
             ✅ **Успешный пуш в ${{ github.event.workflow_run.head_branch }}!**
 
             👤 **Автор:** ${{ github.event.workflow_run.actor.login }}
-            📦 **Репозиторий:** ${{ github.repository }}
-            💬 **Коммит:** ${{ github.event.workflow_run.head_commit.message }}
-            🔗 **Ссылка:** https://github.com/${{ github.repository }}/commit/${{ github.event.workflow_run.head_commit.id }}
+            💬 **Ссылка:** https://github.com/${{ github.repository }}/tree/${{ github.event.workflow_run.head_branch }}
             ⏰ **Время:** ${{ github.event.workflow_run.created_at }}
