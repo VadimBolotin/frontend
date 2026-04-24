@@ -7,6 +7,7 @@
     gap: 30px;
     @include respond-up-to("laptop") {
             gap: 0;
+            cursor: pointer;
     }
 }
 .items{
@@ -19,7 +20,102 @@
     font-size: 16px;
     letter-spacing: 0.13em;
     color:var(--black);
+    cursor: pointer;
+    transition: color 0.5s ease;
     @include respond-up-to("laptop") {
             display: none;
+    }
+    &.active {
+        color: var(--activeMenu); 
+        font-weight: 600;
+    }
+
+    &:hover {
+        opacity: 0.7;
+    }
+}
+.mobileMenu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--white);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.closeButton {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    z-index: 1001;
+    
+    span {
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background-color: var(--black);
+        top: 50%;
+        left: 0;
+        
+        &:first-child {
+            transform: rotate(45deg);
+        }
+        
+        &:last-child {
+            transform: rotate(-45deg);
+        }
+    }
+}
+
+.mobileItems {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.mobileItem {
+    font-weight: 500;
+    font-size: 24px;
+    letter-spacing: 0.13em;
+    color: var(--black);
+    margin: 20px 0;
+    cursor: pointer;
+    
+    &.active {
+        color: var(--activeMenu);
+    }
+}
+
+.mobile-menu-enter-active {
+    animation: slideIn 0.3s ease-out;
+}
+
+.mobile-menu-leave-active {
+    animation: slideOut 0.3s ease-in;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-100%);
     }
 }
