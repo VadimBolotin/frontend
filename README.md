@@ -21,25 +21,20 @@
 | Vite | 8.0 |
 | ESLint | 10.2 |
 
-## 📦 Зависимости
+# 1. Установите зависимости
+npm install
 
-```json
-{
-  "dependencies": {
-    "vue": "^3.5.32"
-  },
-  "devDependencies": {
-    "@eslint/js": "^10.0.1",
-    "@types/node": "^24.12.2",
-    "@vitejs/plugin-vue": "^6.0.6",
-    "@vue/tsconfig": "^0.9.1",
-    "eslint": "^10.2.1",
-    "eslint-plugin-vue": "^10.9.0",
-    "globals": "^17.5.0",
-    "typescript": "~6.0.2",
-    "typescript-eslint": "^8.59.0",
-    "vite": "^8.0.10",
-    "vite-svg-loader": "^5.1.1",
-    "vue-tsc": "^3.2.7"
-  }
-}
+# 2. Запустите сервер для разработки
+npm run dev
+# Приложение: http://localhost:5173
+
+# 3. Сборка для продакшена
+npm run build
+# Перед сборкой: vue-tsc -b (проверка типов)
+
+# 4. Предпросмотр собранного проекта
+npm run preview
+
+# 5. Проверка и исправление кода
+npm run lint           # Проверка ESLint (--max-warnings 0)
+npm run lint:fix       # Авто-исправление ошибок
