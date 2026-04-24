@@ -1,1 +1,5 @@
 export { default as Logo } from './logo.svg?component'
+export { default as AkIcon } from './akk.svg?component'
+export { default as Basket } from './basket.svg?component'
+export { default as Burger } from './burger.svg?component'
+export { default as Like } from './like.svg?component'

@@ -1,0 +1,77 @@
+@use "@/styles/fonts.scss";
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/* Сброс списков */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Сброс ссылок */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Сброс таблиц */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Сброс цитат */
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote::before,
+blockquote::after,
+q::before,
+q::after {
+  content: '';
+}

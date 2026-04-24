@@ -1,0 +1,93 @@
+@use "breakpoints" as *;
+@use "sass:map";
+
+/// Миксин для применения стилей на экранах МЕНЬШЕ или РАВНО заданному брейкпоинту
+/// Пример: respond-up-to('mobile') → @media (max-width: 480px)
+@mixin respond-up-to($device) {
+  $size: map.get($breakpoints, $device);
+
+  @if $size {
+    @media (max-width: $size) {
+      @content;
+    }
+  } @else {
+    @warn "Нет брейкпоинта с именем `#{$device}`";
+  }
+}
+
+/// Миксин для применения стилей на экранах БОЛЬШЕ или РАВНО заданному брейкпоинту
+/// Пример: respond-from('tablet') → @media (min-width: 768px)
+@mixin respond-from($device) {
+  $size: map.get($breakpoints, $device);
+
+  @if $size {
+    @media (min-width: $size) {
+      @content;
+    }
+  } @else {
+    @warn "Нет брейкпоинта с именем `#{$device}`";
+  }
+}
+
+/// Миксин для применения стилей ТОЛЬКО в заданном диапазоне брейкпоинтов
+/// Пример: respond-between('mobile', 'tablet') → @media (min-width: 480px) and (max-width: 768px)
+@mixin respond-between($from, $to) {
+  $min: map.get($breakpoints, $from);
+  $max: map.get($breakpoints, $to);
+
+  @if $min and $max {
+    @media (min-width: $min) and (max-width: $max) {
+      @content;
+    }
+  } @else {
+    @warn "Неверные брейкпоинты: `#{$from}`, `#{$to}`";
+  }
+}
+
+/// Миксин для touch устройств (сенсорные экраны)
+/// Пример: respond-touch-up-to('tablet') → @media (max-width: 768px) and (hover: none) and (pointer: coarse)
+@mixin respond-touch-up-to($device) {
+  $size: map.get($breakpoints, $device);
+
+  @if $size {
+    @media (max-width: $size) and (hover: none) and (pointer: coarse) {
+      @content;
+    }
+  } @else {
+    @warn "Нет брейкпоинта с именем `#{$device}`";
+  }
+}
+
+/// Миксин для touch устройств от определенного брейкпоинта
+@mixin respond-touch-from($device) {
+  $size: map.get($breakpoints, $device);
+
+  @if $size {
+    @media (min-width: $size) and (hover: none) and (pointer: coarse) {
+      @content;
+    }
+  } @else {
+    @warn "Нет брейкпоинта с именем `#{$device}`";
+  }
+}
+
+/// Миксин для touch устройств в диапазоне
+@mixin respond-touch-between($from, $to) {
+  $min: map.get($breakpoints, $from);
+  $max: map.get($breakpoints, $to);
+
+  @if $min and $max {
+    @media (min-width: $min) and (max-width: $max) and (hover: none) and (pointer: coarse) {
+      @content;
+    }
+  } @else {
+    @warn "Неверные брейкпоинты: `#{$from}`, `#{$to}`";
+  }
+}
+
+/// Миксин для всех touch устройств (без ограничения по ширине)
+@mixin respond-touch-only {
+  @media (hover: none) and (pointer: coarse) {
+    @content;
+  }
+}
